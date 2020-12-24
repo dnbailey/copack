@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<h1>Unit {{page.unit}} - {{ page.title }}</h1>
+
+{% assign current = site.units | where: 'unit', page.unit | sort: 'order'%}
+{% for item in current %}
+  {% if item.is_overview %}
+    <p><strong><a href={{item.url}}>Unit {{item.unit}} Overview</a></p></strong>
+  {% else %}
+    <p><a href={{item.url}}>{{item.title}}</a></p>
+  {% endif %}
+{% endfor %}
+
+{{content}}

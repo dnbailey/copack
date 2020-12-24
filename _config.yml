@@ -1,0 +1,14 @@
+title: Coursepack
+
+collections:
+  units:
+    output: true
+    permalink: /:path/
+    layout: unit
+
+defaults:
+  - scope:
+      path: ""
+      type: "units"
+    values:
+      layout: "unit"
