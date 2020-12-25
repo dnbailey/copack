@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Nathan Bailey"]
   spec.email         = ["dev@dnbailey.org"]
 
-  spec.summary       = "A courspack theme that allows teachers to publish instructional materials and post to LMS."
+  spec.summary       = %q{A courspack theme that allows teachers to publish instructional materials and post to LMS.}
   spec.homepage      = "https://github.com/dnbailey/coursepack"
   spec.license       = "MIT"
 
