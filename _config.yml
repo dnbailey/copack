@@ -12,3 +12,13 @@ defaults:
       type: "units"
     values:
       layout: "unit"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE.txt
+  - README-*.md
+  - README.md
+  - coursepack.gemspec
+  - /docs
+  - /screenshots
