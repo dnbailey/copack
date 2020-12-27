@@ -3,12 +3,18 @@ layout: default
 ---
 
 <main class="container mx-auto mt-20 px-10">
-  <h1 class="uppercase font-bold text-6xl mb-6">{{ page.title }}</h1>
+  <div class="text-white flex flex-row items-center text-green-500 mb-2 mb-6">
+    {% include icon.html size="16" %}
+
+    <h1 class="uppercase font-bold text-4xl md:text-6xl ml-4">
+      {{ page.title }}
+    </h1>
+  </div>
 
   <p>{{site.description}}</p>
 
   {{ content }} {% assign overviews = site.units | where: 'is_overview', true %}
-  <section class="grid grid-cols-2 lg:grid-cols-4 my-10">
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-10">
     {% for unit in overviews %}
     <article
       class="flex flex-col justify-between bg-gray-200 shadow p-10 h-64 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white"
@@ -25,18 +31,11 @@ layout: default
 </main>
 <footer class="text-center py-10">
   <p>
-    Courspack was developed by
-    <a class="font-bold uppercase underline" href="https://github.com/dnbailey"
-      >Nathan Bailey</a
-    >
-    and is distributed under a MIT License.
-  </p>
-  <p>
-    Learn how to create your own
+    This site uses
     <a
-      class="font-bold uppercase underline"
+      class="text-green-500 font-bold"
       href="https://github.com/dnbailey/coursepack"
       >Coursepack</a
-    >.
+    >, a educational course pack theme for Jekyll.
   </p>
 </footer>
