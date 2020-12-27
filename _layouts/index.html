@@ -2,17 +2,41 @@
 layout: default
 ---
 
-<h1>{{ page.title }}</h1>
+<main class="container mx-auto mt-20 px-10">
+  <h1 class="uppercase font-bold text-6xl mb-6">{{ page.title }}</h1>
 
-<p>{{site.description}}</p>
+  <p>{{site.description}}</p>
 
-{{ content }}
-
-{% assign overviews = site.units | where: 'is_overview', true %}
-{% for unit in overviews %}
+  {{ content }} {% assign overviews = site.units | where: 'is_overview', true %}
+  <section class="grid grid-cols-2 lg:grid-cols-4 my-10">
+    {% for unit in overviews %}
+    <article
+      class="flex flex-col justify-between bg-gray-200 shadow p-10 h-64 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white"
+    >
+      <div>
+        <h2 class="text-2xl uppercase mb-2 font-bold">
+          <a class="underline" href="{{unit.url}}">Unit {{unit.unit}}</a>
+        </h2>
+        <p class="text-xl">{{unit.description | truncate: 140}}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</main>
+<footer class="text-center py-10">
   <p>
-    <a href="{{unit.url}}">Unit
-      {{unit.unit}}</a>
+    Courspack was developed by
+    <a class="font-bold uppercase underline" href="https://github.com/dnbailey"
+      >Nathan Bailey</a
+    >
+    and is distributed under a MIT License.
   </p>
-  <p>{{unit.description | truncate: 140}}</p>
-{% endfor %}
+  <p>
+    Learn how to create your own
+    <a
+      class="font-bold uppercase underline"
+      href="https://github.com/dnbailey/coursepack"
+      >Coursepack</a
+    >.
+  </p>
+</footer>
