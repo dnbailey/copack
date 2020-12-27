@@ -1,0 +1,15 @@
+---
+---
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .active {
+    @apply font-bold text-green-100;
+  }
+  .active::before {
+    content: "👉 ";
+  }
+}

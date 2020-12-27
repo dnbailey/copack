@@ -13,6 +13,9 @@ defaults:
     values:
       layout: "unit"
 
+plugins:
+  - jekyll-postcss
+
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -20,5 +23,9 @@ exclude:
   - README-*.md
   - README.md
   - coursepack.gemspec
+  - postcss.config.js
+  - tailwind.config.js
+  - package.json
+  - yarn.lock
   - /docs
   - /screenshots
