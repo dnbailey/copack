@@ -13,9 +13,6 @@ defaults:
     values:
       layout: "unit"
 
-plugins:
-  - jekyll-postcss
-
 exclude:
   - Gemfile
   - Gemfile.lock
