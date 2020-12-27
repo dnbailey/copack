@@ -1,5 +1,7 @@
 module.exports = {
-  purge: [],
+  purge: {
+    content: ["_site/**/*.html"],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: { padding: { "fluid-video": "56.25%" } },
