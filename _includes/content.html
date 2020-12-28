@@ -1,6 +1,36 @@
-<section class="w-full md:w-3/4 py-8 px-10">
-  <h1 class="text-gray-400 text-xl mb-8">
+<section class="w-full px-10 py-8 md:w-3/4">
+  <p class="mb-8 text-xl text-gray-400">
     {{page.unit}}&nbsp;▶&nbsp;{{page.title}}
-  </h1>
-  <div class="prose md:prose-xl overflow-hidden">{{content}}</div>
+  </p>
+
+  <div class="overflow-hidden prose md:prose-xl">
+    <h1>{{page.title}}</h1>
+
+    {% if page.objectives %}
+      <p>
+        <strong>Objectives:</strong>
+      </p>
+      <ul>
+        {% for objective in page.objectives %}
+          <li>{{objective}}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if page.est_time %}
+      <p>
+        <strong>Estimated Time:
+        </strong>
+        {{page.est_time}}
+      </p>
+    {% endif %}
+
+    {% if page.dropbox %}
+      <p>
+        <strong>Dropbox:</strong>
+        <a href="{{page.dropbox.url}}" target="_blank" rel="noopener noreferrer">{{page.dropbox.title}}</a>
+      </p>
+    {% endif %}
+    {{content}}
+  </div>
 </section>
