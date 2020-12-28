@@ -1,0 +1,39 @@
+<button class="fixed z-20 flex items-center px-3 py-2 text-gray-400 bg-white border border-gray-400 rounded right-6 top-6 lg:hidden hover:text-black hover:border-black" id="nav-toggle">
+  <svg class="w-3 h-3 fill-current" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+</button>
+
+<nav class="fixed right-0 hidden w-2/3 h-screen p-6 bg-gray-100 shadow-lg lg:w-1/4 lg:block" id="nav-content">
+  <div class="flex items-center flex-shrink-0 mr-6">
+    <div class="pt-8 lg:pt-0">
+      <h1 class="mb-2 text-lg font-bold text-gray-500 uppercase md:text-xl">
+        {{site.title}}
+      </h1>
+      <h2 class="text-xl font-bold uppercase md:text-2xl">
+        {{page.unit}}
+      </h2>
+    </div>
+  </div>
+
+
+  {% assign current = site.units | where: 'unit', page.unit | where: 'in_sidebar', true | sort: 'order'%}
+  <div class="w-full pt-6 overflow-y-scroll">
+    <ul class="divide-y-2 list-reset">
+      {% for item in current %}
+        <li class="uppercase">
+          <a class="block p-4 {% if item.url == page.url %} font-bold underline{% endif %}" href="{{item.url}}">{{item.title}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Javascript to toggle the menu
+  document.getElementById("nav-toggle").onclick = function () {
+    document
+      .getElementById("nav-content")
+      .classList
+      .toggle("hidden");
+  }
+</script>
