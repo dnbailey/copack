@@ -6,4 +6,13 @@
   .active {
     @apply font-bold text-green-100 underline;
   }
+  code {
+    @apply px-2 py-1 bg-gray-300 rounded;
+  }
+  code:before {
+    content: "" !important;
+  }
+  code:after {
+    content: "" !important;
+  }
 }

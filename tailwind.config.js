@@ -5,7 +5,9 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: { padding: { "fluid-video": "56.25%" } },
+    extend: {
+      padding: { "fluid-video": "56.25%" },
+    },
   },
   variants: {
     extend: {},
