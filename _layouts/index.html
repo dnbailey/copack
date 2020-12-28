@@ -2,25 +2,21 @@
 layout: default
 ---
 
-<main class="container mx-auto mt-20 px-10">
-  <div class="text-white flex flex-row items-center text-green-500 mb-2 mb-6">
-    {% include icon.html size="16" %}
-
-    <h1 class="uppercase font-bold text-4xl md:text-6xl ml-4">
-      {{ page.title }}
-    </h1>
+<main class="container px-10 mx-auto mt-20">
+  <div class="flex flex-row items-center mb-2 text-green-500">
+    <h1 class="text-4xl font-bold uppercase md:text-6xl">{{ page.title }}</h1>
   </div>
 
   <p>{{site.description}}</p>
 
   {{ content }} {% assign overviews = site.units | where: 'is_overview', true %}
-  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-10">
+  <section class="grid grid-cols-1 my-10 md:grid-cols-2 lg:grid-cols-4">
     {% for unit in overviews %}
     <article
-      class="flex flex-col justify-between bg-gray-200 shadow p-10 h-64 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white"
+      class="flex flex-col justify-between h-64 p-10 text-white bg-gray-200 shadow rounded-xl bg-gradient-to-r from-green-500 to-green-600"
     >
       <div>
-        <h2 class="text-2xl uppercase mb-2 font-bold">
+        <h2 class="mb-2 text-2xl font-bold uppercase">
           <a class="underline" href="{{unit.url}}">Unit {{unit.unit}}</a>
         </h2>
         <p class="text-xl">{{unit.description | truncate: 140}}</p>
@@ -29,11 +25,11 @@ layout: default
     {% endfor %}
   </section>
 </main>
-<footer class="text-center py-10">
+<footer class="py-10 text-center">
   <p>
     This site uses
     <a
-      class="text-green-500 font-bold"
+      class="font-bold text-green-500"
       href="https://github.com/dnbailey/coursepack"
       >Coursepack</a
     >, a educational course pack theme for Jekyll.
