@@ -1,0 +1,4 @@
+---
+title: Coursepack
+layout: index
+---
