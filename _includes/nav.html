@@ -3,7 +3,7 @@
     <title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
 </button>
 
-<nav class="fixed right-0 z-10 hidden w-2/3 h-screen p-6 bg-gray-100 shadow-lg lg:w-1/4 lg:block" id="nav-content">
+<nav class="fixed right-0 z-10 hidden w-1/3 h-screen p-6 bg-gray-100 shadow-lg lg:block" id="nav-content">
   <div class="flex items-center flex-shrink-0 mr-6">
     <div class="pt-8 lg:pt-0">
       <h1 class="mb-2 text-lg font-bold text-gray-500 uppercase md:text-xl">
@@ -16,24 +16,28 @@
   </div>
 
 
-  {% assign current = site.units | where: 'unit', page.unit | where: 'in_sidebar', true | sort: 'order'%}
+  {% assign current = site.units | where: 'unit', page.unit | sort: 'order'%}
   <div class="w-full pt-6 overflow-y-scroll">
     <ul class="divide-y-2 list-reset">
       {% for item in current %}
-        <li class="uppercase">
-          <a class="block p-4 {% if item.url == page.url %} font-bold underline{% endif %}" href="{{item.url}}">{{item.title}}</a>
+        <li class="flex flex-row items-center p-4 uppercase">
+          {%if item.is_assignment %}
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            </svg>
+          {% endif %}
+          <a class="block {% if item.url == page.url %} font-bold underline{% endif %}" href="{{item.url}}">{{item.title}}</a>
         </li>
       {% endfor %}
     </ul>
   </div>
+  <script type="application/javascript">
+    // Javascript to toggle the menu
+    document.getElementById("nav-toggle").onclick = function () {
+      document
+        .getElementById("nav-content")
+        .classList
+        .toggle("hidden");
+    }
+  </script>
 </nav>
-
-<script>
-  // Javascript to toggle the menu
-  document.getElementById("nav-toggle").onclick = function () {
-    document
-      .getElementById("nav-content")
-      .classList
-      .toggle("hidden");
-  }
-</script>
