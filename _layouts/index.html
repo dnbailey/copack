@@ -17,9 +17,12 @@ layout: default
     >
       <div>
         <h2 class="mb-2 text-2xl font-bold uppercase">
-          <a class="underline" href="{{unit.url}}">Unit {{unit.unit}}</a>
+          <a class="underline" href="{{unit.url}}">{{unit.unit}}</a>
         </h2>
-        <p class="text-xl">{{unit.description | truncate: 140}}</p>
+        <p class="text-xl">{{unit.description | truncate: 95}}</p>
+      </div>
+      <div class="flex flex-col text-xs text-center">
+        {% include copyButton.html %}
       </div>
     </article>
     {% endfor %}
