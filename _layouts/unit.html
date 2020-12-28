@@ -3,5 +3,8 @@ layout: default
 ---
 
 <main class="flex flex-col md:flex-row">
-  {% include sidebar.html %} {% include content.html %}
+  {% if page.is_overview or page.in_sidebar %}
+    {% include sidebar.html %}
+  {% endif %}
+  {% include content.html %}
 </main>

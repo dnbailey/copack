@@ -4,37 +4,76 @@ layout: default
 
 <main class="container px-10 mx-auto mt-20">
   <div class="flex flex-row items-center mb-2 text-green-500">
-    <h1 class="text-4xl font-bold uppercase md:text-6xl">{{ page.title }}</h1>
+    <h1 class="mb-2 text-4xl font-bold uppercase md:text-6xl">{{ page.title }}</h1>
   </div>
 
   <p>{{site.description}}</p>
 
-  {{ content }} {% assign overviews = site.units | where: 'is_overview', true %}
-  <section class="grid grid-cols-1 gap-2 my-10 md:grid-cols-2 lg:grid-cols-4">
+  {{ content }}
+  {% assign overviews = site.units | where: 'is_overview', true %}
+  <section class="grid grid-cols-1 gap-10 my-10 md:grid-cols-1">
     {% for unit in overviews %}
-    <article
-      class="flex flex-col justify-between h-64 p-10 text-white bg-gray-200 shadow rounded-xl bg-gradient-to-r from-green-500 to-green-600"
-    >
-      <div>
-        <h2 class="mb-2 text-2xl font-bold uppercase">
-          <a class="underline" href="{{unit.url}}">{{unit.unit}}</a>
-        </h2>
-        <p class="text-xl">{{unit.description | truncate: 80}}</p>
+      <div class="pt-4 text-white bg-green-600 border shadow rounded-xl">
+        <h1 class="mb-2 ml-4 text-3xl font-bold">
+          <a href="{{unit.url}}">{{unit.unit}}</a>
+        </h1>
+        <p class="ml-4 text-sm font-medium">
+          <strong>Unit URL:</strong>&nbsp;{{unit.url | prepend: site.url}}</p>
+        <p class="ml-4 text-sm font-medium">
+          <strong>Unit Description:</strong>&nbsp;{{unit.description | truncate: 45, '...'}}</p>
+        <button class="flex flex-row items-center px-4 py-2 mt-4 ml-4 border rounded-lg hover:bg-green-600 hover:text-white" data-clipboard={{unit.url | prepend: site.url}} onclick="copyToClipboard(this)">
+          <svg class="w-6 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"/>
+            <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"/>
+          </svg>
+          Copy URL to Clipboard
+        </button>
+
+        <div class="w-full mt-4 text-black bg-white">
+          <div class="w-full mt-5">
+            {% assign current = site.units | where: 'unit', unit.unit | where: 'in_sidebar', null | where: 'is_overview', null | sort: 'order'%}
+            <ul class="divide-y-2">
+              {% if current != empty %}
+                {% for item in current %}
+                  {% include row.html %}
+                {% endfor %}
+              {% else %}
+                <p class="py-4 text-center text-gray-400">No assignments.</p>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="flex flex-col text-xs text-center">
-        {% include copyButton.html %}
-      </div>
-    </article>
     {% endfor %}
   </section>
+
+
 </main>
 <footer class="py-10 text-center">
   <p>
     This site uses
-    <a
-      class="font-bold text-green-500"
-      href="https://github.com/dnbailey/coursepack"
-      >Coursepack</a
-    >, a educational course pack theme for Jekyll.
+    <a class="font-bold text-green-500" href="https://github.com/dnbailey/coursepack">Coursepack</a>, a educational course pack theme for Jekyll.
   </p>
 </footer>
+
+<script type:"application/javascript">
+  function copyToClipboard(element, embed) {
+    let str = element.dataset.clipboard;
+
+    // Use iframe embed code
+    if (embed === true) {
+      str = `<iframe src="${str}" width="100%" height="500" scrolling="yes" style="overflow-y: scroll !important;"></iframe>`;
+    }
+
+    // Copy text to clipboard
+    const el = document.createElement("textarea");
+    el.value = str;
+    el.setAttribute("readonly", "");
+    el.style.position = "absolute";
+    el.style.left = "-9999px";
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+  }
+</script>
