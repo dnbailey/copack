@@ -4,18 +4,17 @@ layout: default
 
 <main class="container px-10 mx-auto mt-20">
   <div class="flex flex-row items-center mb-2 text-gray-600">
-    <h1 class="mb-2 text-4xl font-bold uppercase md:text-6xl">{{ page.title }}</h1>
+    <h1 class="mb-2 text-4xl font-bold uppercase md:text-6xl">{% if page.title %}{{ page.title }}{% else %}{{site.title}}{% endif %}</h1>
   </div>
 
-  <p><strong>Author:</strong> {{site.author | trim }}</p>
-  <p><strong>Description: </strong>{{site.description}}</p>
+  {% if site.author %}<p><strong>Author:</strong> {{site.author | trim }}</p>{% endif %}
+  {% if site.description %}<p><strong>Description: </strong>{{site.description}}</p>{% endif %}
 
   {{ content }}
 
-
-  <button class="flex flex-row items-center px-4 py-2 mt-4 text-white bg-gray-700 border rounded-lg hover:bg-white hover:text-black">
+  <a href="syllabus" class="inline-block px-4 py-2 mt-4 text-white bg-gray-700 border rounded-lg hover:bg-white hover:text-black">
     Syllabus
-  </button>
+  </a>
 
   {% assign overviews = site.units | where: 'is_overview', true %}
   <section class="grid grid-cols-1 gap-10 my-10 md:grid-cols-1">
