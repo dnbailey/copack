@@ -1,21 +1,48 @@
-<li class="flex flex-row justify-between w-full px-4 py-4 text-gray-600 list-none hover:bg-gray-100">
+<li
+  class="flex flex-row justify-between w-full px-4 py-4 text-gray-600 list-none hover:bg-gray-100"
+>
   <div class="flex flex-row items-center">
     {%if item.is_assignment %}
-      <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-      </svg>
+    <svg
+      class="w-6 h-6 mr-4"
+      fill="none"
+      stroke="currentColor"
+      viewbox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+    </svg>
     {% endif %}
-    <a class="font-medium text-gray-600 transition duration-150 border-gray-100" href="{{item.url}}">
+    <a
+      class="font-medium text-gray-600 transition duration-150 border-gray-100"
+      href="{{item.url}}"
+    >
       <div>
         <h3>{{item.title}}</h3>
         <p class="text-sm text-gray-400">{{item.url | prepend: site.url}}</p>
       </div>
     </a>
   </div>
-  <button class="flex flex-row items-center px-4 border rounded-lg hover:bg-green-600 hover:text-white" data-clipboard="{{item.url | prepend: site.url}}" onclick="copyToClipboard(this, true)">
-    <svg class="w-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"/>
-      <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"/>
+  <button
+    class="flex flex-row items-center px-4 border rounded-lg hover:bg-gray-600 hover:text-white"
+    data-clipboard="{{item.url | prepend: site.url}}"
+    onclick="copyToClipboard(this, true)"
+  >
+    <svg
+      class="w-6"
+      fill="currentColor"
+      viewbox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
+      <path
+        d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"
+      />
     </svg>
     <p class="hidden ml-6 md:block">Copy Embed Code</p>
   </button>
