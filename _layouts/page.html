@@ -2,8 +2,10 @@
 layout: default
 ---
 
+{% if page.banner %}
+<div><img src="{{page.banner}}" alt="{{site.title}}/></div>
+{% endif %}
+
 <main class="max-w-full px-10 py-8">
-  <div class="prose md:prose-lg">
-    {{content}}
-  </div>
+  <div class="prose md:prose-lg">{{content}}</div>
 </main>
